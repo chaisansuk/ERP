@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:weightSum="1">
+
+
+        <ImageView
+            android:id="@+id/imgView5"
+            android:layout_width="320dp"
+            android:layout_height="110dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="48dp"
+            android:background="@drawable/splashas" />
+
+        <EditText
+            android:id="@+id/txtUsername"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgView5"
+            android:layout_marginTop="32dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/hint_pin"
+            android:text="admin"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint">
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txtUsername"
+            android:layout_marginTop="14dp"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:ems="10"
+            android:hint="@string/hint_pin2"
+            android:text="12345678"
+            android:padding="10dp"
+            android:password="true"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textColor="@color/input_login"
+            android:textColorHint="@color/input_login_hint">
+
+            <requestFocus />
+        </EditText>
+
+        <!-- Login Button -->
+
+        <!-- Link to Login Screen -->
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnLogin"
+        style="@android:style/Widget.Button.Inset"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_alignStart="@+id/textView5"
+        android:layout_alignTop="@+id/pass"
+        android:layout_weight="0.55"
+        android:text="@string/btn_login"
+        android:onClick="checkLogin"
+        android:textColor="@color/btn_login"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/circlebutton"/>
+
+
+
+</LinearLayout>
