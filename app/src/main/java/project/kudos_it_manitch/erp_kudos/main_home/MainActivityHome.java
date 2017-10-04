@@ -159,7 +159,7 @@ public class MainActivityHome extends AppCompatActivity {
             //this method will be running on UI thread
 
             pdLoading.dismiss();
-
+            Log.d("count",result.toString());
             try {
                 JSONObject jsonObject = new JSONObject(result);
 
@@ -187,7 +187,7 @@ public class MainActivityHome extends AppCompatActivity {
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
-                Log.d("count","777");
+                Log.d("count",e.toString());
                 Toast.makeText(getApplicationContext(),"กรุณาเชื่อมต่ออินเตอร์เน็ต ",Toast.LENGTH_LONG).show();
             }
 

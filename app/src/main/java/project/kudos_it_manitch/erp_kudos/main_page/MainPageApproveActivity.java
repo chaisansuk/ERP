@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import project.kudos_it_manitch.erp_kudos.R;
 import project.kudos_it_manitch.erp_kudos.approve_home.ListPrActivity;
@@ -16,27 +17,28 @@ import project.kudos_it_manitch.erp_kudos.inventory_home.ListPrActivity2;
 import project.kudos_it_manitch.erp_kudos.main_home.MainActivityHome;
 
 
-public class MainPageICActivity extends AppCompatActivity {
+public class MainPageApproveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_page_ic);
+        setContentView(R.layout.activity_main_page_approve);
 
-        Button receivebtn = (Button) findViewById(R.id.receivebtn);
-        Button issuebtn = (Button) findViewById(R.id.issuebtn);
+        Button pobtn = (Button) findViewById(R.id.pobtn);
+        Button prbtn = (Button) findViewById(R.id.prbtn);
+        TextView text_count_po = (TextView) findViewById(R.id.text_count_po);
+        TextView text_count_pr = (TextView) findViewById(R.id.text_count_pr);
 
 
-
-        findViewById(R.id.receivebtn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.pobtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPageICActivity.this,ListPrActivity.class));
+                startActivity(new Intent(MainPageApproveActivity.this,ListPrActivity.class));
             }
         });
-        findViewById(R.id.issuebtn).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.prbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPageICActivity.this,ListPrActivity2.class));
+                startActivity(new Intent(MainPageApproveActivity.this,ListPrActivity2.class));
             }
         });
 

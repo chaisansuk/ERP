@@ -44,10 +44,12 @@ public class MainPageActivity extends AppCompatActivity implements NavigationVie
         Button logout = null;
 
 
+//       approvebtn.setEnabled(false);
+//        approvebtn.setBackgroundColor(Color.BLUE);
         findViewById(R.id.approvebtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPageActivity.this,ListPrActivity.class));
+                startActivity(new Intent(MainPageActivity.this,MainPageApproveActivity.class));
             }
         });
         findViewById(R.id.inventorybtn).setOnClickListener(new View.OnClickListener() {
@@ -78,6 +80,9 @@ public class MainPageActivity extends AppCompatActivity implements NavigationVie
             String path_img = data_json.getString("uimg");
             Picasso.with(MainPageActivity.this).load(path_img).into(circleImageUser);
 
+            JSONObject permissionobj = new JSONObject(data_json.getString("permission"));
+
+//            Toast.makeText(getApplicationContext(),permissionobj.toString(),Toast.LENGTH_LONG).show();
 
 
         } catch (JSONException e) {
