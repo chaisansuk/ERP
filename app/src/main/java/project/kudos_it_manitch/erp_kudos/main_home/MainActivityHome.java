@@ -6,9 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -20,13 +18,8 @@ import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
 import project.kudos_it_manitch.erp_kudos.main_page.MainPageActivity;
 
 public class MainActivityHome extends AppCompatActivity {
-    public static final int CONNECTION_TIMEOUT = 10000;
-    public static final int READ_TIMEOUT = 15000;
     private EditText txtUsername;
     private EditText txtPassword;
-    private TextView text_count_approve;
-    private TextView text_count_ic;
-    private Button btnLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +28,6 @@ public class MainActivityHome extends AppCompatActivity {
 
         txtUsername = (EditText) findViewById(R.id.txtUsername);
         txtPassword = (EditText) findViewById(R.id.txtPassword);
-//         btnLogin = (Button) findViewById(R.id.btnLogin);
         // shereoreference
 
 
@@ -86,7 +78,6 @@ public class MainActivityHome extends AppCompatActivity {
             }
         }
 
-//        new AsyncLogin().execute(m_user, m_pass);
     }
 
 //    private class AsyncLogin extends AsyncTask<String, String, String> {
