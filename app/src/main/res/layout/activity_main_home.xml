@@ -1,97 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@drawable/construction1"
+    android:alpha="0.8"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="1">
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:weightSum="1">
+    <ImageView
+        android:id="@+id/imgView5"
+        android:layout_width="332dp"
+        android:layout_height="114dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="121dp"
+        android:background="@drawable/splashas"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintTop_creator="1" />
 
+    <EditText
+        android:id="@+id/txtUsername"
+        style="@android:style/Widget.DeviceDefault.AutoCompleteTextView"
+        android:layout_width="271dp"
+        android:layout_height="36dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/hint_pin"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:text="admin"
+        android:textAlignment="center"
+        android:textColor="@color/input_login"
+        android:textColorHint="@color/input_login_hint"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.993"
+        tools:layout_conversion_absoluteHeight="41dp"
+        tools:layout_conversion_absoluteWidth="371dp"
+        tools:layout_conversion_absoluteX="20dp"
+        tools:layout_conversion_absoluteY="190dp">
 
-        <ImageView
-            android:id="@+id/imgView5"
-            android:layout_width="320dp"
-            android:layout_height="110dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginTop="48dp"
-            android:background="@drawable/splashas" />
+        <requestFocus
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_conversion_absoluteX="20dp"
+            tools:layout_conversion_absoluteY="190dp" />
+    </EditText>
 
-        <EditText
-            android:id="@+id/txtUsername"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgView5"
-            android:layout_marginTop="32dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="@string/hint_pin"
-            android:text="admin"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint">
+    <EditText
+        android:id="@+id/txtPassword"
+        android:layout_width="272dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="375dp"
+        android:background="@color/white"
+        android:ems="10"
+        android:hint="@string/hint_pin2"
+        android:padding="10dp"
+        android:password="true"
+        android:singleLine="true"
+        android:text="12345678"
+        android:textAlignment="center"
+        android:textColor="@color/input_login"
+        android:textColorHint="@color/input_login_hint"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_conversion_absoluteHeight="41dp"
+        tools:layout_conversion_absoluteWidth="371dp"
+        tools:layout_conversion_absoluteX="20dp"
+        tools:layout_conversion_absoluteY="245dp">
 
-            <requestFocus />
-        </EditText>
+        <requestFocus
+            tools:layout_conversion_absoluteHeight="0dp"
+            tools:layout_conversion_absoluteWidth="0dp"
+            tools:layout_conversion_absoluteX="20dp"
+            tools:layout_conversion_absoluteY="245dp" />
+    </EditText>
 
-        <EditText
-            android:id="@+id/txtPassword"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/txtUsername"
-            android:layout_marginTop="14dp"
-            android:layout_weight="1"
-            android:background="@color/white"
-            android:ems="10"
-            android:hint="@string/hint_pin2"
-            android:text="12345678"
-            android:padding="10dp"
-            android:password="true"
-            android:singleLine="true"
-            android:textAlignment="center"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint">
+    <!-- Login Button -->
 
-            <requestFocus />
-        </EditText>
+    <!-- Link to Login Screen -->
 
-        <!-- Login Button -->
-
-        <!-- Link to Login Screen -->
-
-
-    </RelativeLayout>
 
     <Button
         android:id="@+id/btnLogin"
         style="@android:style/Widget.Button.Inset"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignStart="@+id/textView5"
-        android:layout_alignTop="@+id/pass"
-        android:layout_weight="0.55"
-        android:text="@string/btn_login"
+        android:layout_marginTop="8dp"
         android:onClick="checkLogin"
+        android:text="@string/btn_login"
         android:textColor="@color/btn_login"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/circlebutton"/>
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintLeft_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 
 
-</LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

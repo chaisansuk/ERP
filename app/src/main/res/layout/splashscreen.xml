@@ -40,8 +40,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="100dp"
-        android:layout_height="24dp"
+        android:layout_width="101dp"
+        android:layout_height="14dp"
         android:layout_above="@+id/progressBar"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="18dp"
@@ -51,10 +51,8 @@
         android:textColor="@android:color/holo_red_light"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.95"
-        tools:layout_editor_absoluteY="551dp" />
+        app:layout_constraintVertical_bias="1.0" />
 </android.support.constraint.ConstraintLayout>
