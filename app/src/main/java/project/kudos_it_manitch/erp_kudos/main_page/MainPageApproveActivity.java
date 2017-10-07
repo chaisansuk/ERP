@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +16,8 @@ import project.kudos_it_manitch.erp_kudos.main_home.MainActivityHome;
 
 
 public class MainPageApproveActivity extends AppCompatActivity {
+    private TextView text_count_po;
+    private TextView text_count_pr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,8 +25,8 @@ public class MainPageApproveActivity extends AppCompatActivity {
 
         Button pobtn = (Button) findViewById(R.id.pobtn);
         Button prbtn = (Button) findViewById(R.id.prbtn);
-        TextView text_count_po = (TextView) findViewById(R.id.text_count_po);
-        TextView text_count_pr = (TextView) findViewById(R.id.text_count_pr);
+        text_count_po = (TextView) findViewById(R.id.text_count_po);
+        text_count_pr = (TextView) findViewById(R.id.text_count_pr);
 
 
         findViewById(R.id.pobtn).setOnClickListener(new View.OnClickListener() {
@@ -48,28 +48,6 @@ public class MainPageApproveActivity extends AppCompatActivity {
 
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_page, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     public  void logout(View view){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);

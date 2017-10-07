@@ -55,23 +55,20 @@
         android:textColor="@color/white"
         android:textSize="40dp"
 
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
-        app:layout_constraintHorizontal_bias="0.495" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.001" />
 
 <RelativeLayout
-    android:layout_width="286dp"
-    android:layout_height="66dp"
+    android:layout_width="283dp"
+    android:layout_height="61dp"
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     android:id="@+id/relativeLayout"
     app:layout_constraintTop_toTopOf="parent"
-    android:layout_marginTop="353dp"
-    app:layout_constraintHorizontal_bias="0.496">
+    android:layout_marginTop="330dp">
 
     <RelativeLayout
         android:id="@+id/relative"
@@ -81,7 +78,7 @@
 
         <Button
             android:id="@+id/approvebtn"
-            style="@android:style/Widget.Button.Inset"
+            style="@android:style/Widget.DeviceDefault.Button.Inset"
             android:layout_width="288dp"
             android:layout_height="83dp"
             android:layout_alignParentStart="true"
@@ -107,10 +104,9 @@
             android:id="@+id/relative1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
-
             <Button
                 android:id="@+id/inventorybtn"
-                style="@android:style/Widget.Button.Inset"
+                style="@android:style/Widget.DeviceDefault.Button.Inset"
                 android:layout_width="288dp"
                 android:layout_height="84dp"
                 android:text="INVENTORY"
@@ -130,37 +126,36 @@
     </RelativeLayout>
 
 
+
+
     <TextView
         android:id="@+id/nameUser"
         android:layout_width="321dp"
         android:layout_height="90dp"
         android:text="TextView"
-        android:textAlignment="center"
-        android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="22dp"
-        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.512"
         app:layout_constraintVertical_bias="0.132" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/imageUser"
         android:layout_width="183dp"
         android:layout_height="172dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerCrop"
         android:src="@mipmap/ic_launcher_round"
-        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:srcCompat="@android:drawable/sym_def_app_icon"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92"
-        app:srcCompat="@android:drawable/sym_def_app_icon" />
+        android:layout_marginTop="8dp"
+        app:layout_constraintVertical_bias="0.92" />
 
     <Button
         android:id="@+id/logout"

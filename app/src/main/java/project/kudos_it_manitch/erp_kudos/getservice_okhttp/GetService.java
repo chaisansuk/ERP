@@ -61,6 +61,7 @@ public class GetService extends AsyncTask<String, Void, String> {
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(url).post(formBody.build()).build();
             Response response = okHttpClient.newCall(request).execute();
+            Log.d("code", String.valueOf(response.code())) ;
             String resJson = response.body().string();
             Log.d("OKhttp", "res try ==>" + resJson);
 
