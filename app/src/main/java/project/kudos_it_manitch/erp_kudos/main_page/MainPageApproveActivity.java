@@ -41,13 +41,7 @@ public class MainPageApproveActivity extends AppCompatActivity {
                 startActivity(new Intent(MainPageApproveActivity.this,ListPrActivity2.class));
             }
         });
-
-    /////////testtttt
-
     }
-
-
-
 
     public  void logout(View view){
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
