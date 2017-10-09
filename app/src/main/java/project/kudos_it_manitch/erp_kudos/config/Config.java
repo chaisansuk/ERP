@@ -5,15 +5,10 @@ package project.kudos_it_manitch.erp_kudos.config;
  */
 
 public class Config {
-
     private String host = "http://192.168.100.9/cloudmeka/";
-
     private String serlogin = "app_controller/login_app";
-
     private String noti = "app_controller/get_notify";
-
     private String listapprove = "app_controller/get_list_approve";
-
 
     public String getHost() {
         return host;
