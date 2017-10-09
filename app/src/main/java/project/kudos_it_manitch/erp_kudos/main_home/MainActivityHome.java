@@ -84,7 +84,7 @@ public class MainActivityHome extends AppCompatActivity {
 
                 }else{
                     String message = jsonObject.getString("message");
-                    Toast.makeText(getApplicationContext(),"รหัสผิดโว้ย ไม่เนียนไปเรียนมาใหม่ "+message,Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(),"กรุณาตรวจสอบ Username หรือ password ของท่านอีกครั้ง"+message,Toast.LENGTH_LONG).show();
 
                 }
 
