@@ -70,6 +70,7 @@ public class GetService extends AsyncTask<String, Void, String> {
             Log.d("OKhttp", "res try ==>" + e.toString());
         }
 
+        // if this class error return null
         return null;
     }
 
