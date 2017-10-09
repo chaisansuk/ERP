@@ -173,9 +173,6 @@ public class MainPageActivity extends AppCompatActivity {
 
 
 
-
-
-
         } catch (JSONException e) {
             e.printStackTrace();
         }
