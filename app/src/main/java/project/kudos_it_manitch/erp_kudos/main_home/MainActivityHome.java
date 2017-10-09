@@ -42,7 +42,7 @@ public class MainActivityHome extends AppCompatActivity {
         final String m_pass = txtPassword.getText().toString();
         if (m_user.equals("")||m_pass.equals(""))
         {
-            Toast.makeText(getApplicationContext(),"ไอควายกรอกดีๆสิ",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"กรุณาตรวจสอบ Username หรือ password ของท่านอีกครั้ง",Toast.LENGTH_LONG).show();
         }else {
 
             Config config = new Config();
@@ -53,40 +53,47 @@ public class MainActivityHome extends AppCompatActivity {
             getService.execute();
 
             try {
-                String res = getService.get().toString();
-                JSONObject jsonObject = new JSONObject(res);
+                String res = getService.get();
 
-                boolean login_status = jsonObject.getBoolean("status");
-                String data_obj = jsonObject.getString("data");
-                JSONArray jsonArray_data = new JSONArray(data_obj);
+                if(res!=null){
+                    JSONObject jsonObject = new JSONObject(res.toString());
 
-                if(login_status == true){
-                    JSONObject data_user = jsonArray_data.getJSONObject(0);
-                    Toast.makeText(getApplicationContext(),"Welcome "+data_user.getString("m_name")+" !!!",Toast.LENGTH_LONG).show();
+                    boolean login_status = jsonObject.getBoolean("status");
+                    String data_obj = jsonObject.getString("data");
+                    JSONArray jsonArray_data = new JSONArray(data_obj);
 
-                    //crete sharedprefer
-                    SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putBoolean("status_login",true);
-                    editor.putString("m_code",data_user.getString("m_code"));
-                    editor.putString("m_id",data_user.getString("m_id"));
-                    editor.putString("m_user",m_user);
-                    editor.putString("m_pass",m_pass);
-                    editor.commit();
+                    if(login_status == true){
+                        JSONObject data_user = jsonArray_data.getJSONObject(0);
+                        Toast.makeText(getApplicationContext(),"Welcome "+data_user.getString("m_name")+" !!!",Toast.LENGTH_LONG).show();
 
-
-                    // intent to home page list
-                    Intent intent = new Intent(getApplicationContext(),MainPageActivity.class);
-                    intent.putExtra("data",data_user.toString());
-                    startActivity(intent);
+                        //crete sharedprefer
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putBoolean("status_login",true);
+                        editor.putString("m_code",data_user.getString("m_code"));
+                        editor.putString("m_id",data_user.getString("m_id"));
+                        editor.putString("m_user",m_user);
+                        editor.putString("m_pass",m_pass);
+                        editor.commit();
 
 
-                    MainActivityHome.this.finish();
+                        // intent to home page list
+                        Intent intent = new Intent(getApplicationContext(),MainPageActivity.class);
+                        intent.putExtra("data",data_user.toString());
+                        startActivity(intent);
+
+
+                        MainActivityHome.this.finish();
+
+                    }else{
+                        String message = jsonObject.getString("message");
+                        Toast.makeText(getApplicationContext(),"กรุณาตรวจสอบ Username หรือ password ของท่านอีกครั้ง"+message,Toast.LENGTH_LONG).show();
+
+                    }
 
                 }else{
-                    String message = jsonObject.getString("message");
-                    Toast.makeText(getApplicationContext(),"กรุณาตรวจสอบ Username หรือ password ของท่านอีกครั้ง"+message,Toast.LENGTH_LONG).show();
-
+                    Toast.makeText(getApplicationContext(),"ไม่สามารถเชื่อต่อได้",Toast.LENGTH_SHORT).show();
                 }
+
 
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(),e.toString(),Toast.LENGTH_LONG).show();

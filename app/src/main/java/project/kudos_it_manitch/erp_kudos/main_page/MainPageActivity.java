@@ -20,8 +20,12 @@ import org.json.JSONObject;
 import de.hdodenhof.circleimageview.CircleImageView;
 import project.kudos_it_manitch.erp_kudos.R;
 import project.kudos_it_manitch.erp_kudos.approve_home.ListPrActivity;
+import project.kudos_it_manitch.erp_kudos.config.Config;
+import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
 import project.kudos_it_manitch.erp_kudos.inventory_home.ListPrActivity2;
 import project.kudos_it_manitch.erp_kudos.main_home.MainActivityHome;
+
+import static android.R.attr.permission;
 
 
 public class MainPageActivity extends AppCompatActivity {
@@ -44,6 +48,11 @@ public class MainPageActivity extends AppCompatActivity {
         // shereoreference
         sharedPreferences = getApplicationContext().getSharedPreferences("session_member", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        Config config = new Config();
+        String body = "[{'key':'permission','value':'"+permission+"'}]";
+        GetService getService = new GetService(getApplicationContext(),config.getNoti(),body);
+        getService.execute();
 
 
         findViewById(R.id.approvebtn).setOnClickListener(new View.OnClickListener() {
@@ -79,6 +88,7 @@ public class MainPageActivity extends AppCompatActivity {
             String path_img = data_json.getString("uimg");
             Picasso.with(MainPageActivity.this).load(path_img).into(circleImageUser);
             JSONObject permissionobj = new JSONObject(data_json.getString("permission"));
+            text_count_approve.setText(data_json.getString("permission"));
 
         } catch (JSONException e) {
             e.printStackTrace();

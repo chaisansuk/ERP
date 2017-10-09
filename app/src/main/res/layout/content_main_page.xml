@@ -100,7 +100,7 @@
         android:layout_alignRight="@+id/relative"
         android:layout_centerHorizontal="true"
         android:background="@drawable/item_count"
-        android:text="50"
+        android:text="0"
         android:textAlignment="center"
         android:textColor="@color/white" />
 </RelativeLayout>
