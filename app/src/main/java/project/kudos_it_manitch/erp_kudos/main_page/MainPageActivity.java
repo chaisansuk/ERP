@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -161,7 +160,8 @@ public class MainPageActivity extends AppCompatActivity {
             if(obj_approve.getBoolean("pr") == true || obj_approve.getBoolean("po") == true){
                 approvebtn.setEnabled(true);
             }else{
-                approvebtn.setBackgroundColor(Color.DKGRAY);
+//              approvebtn.setBackgroundColor(Color.DKGRAY);
+//              approvebtn.setBackgroundColor(Color.alpha((int) 0.3));
                 approvebtn.setEnabled(false);
             }
 
