@@ -61,11 +61,15 @@ public class GetService extends AsyncTask<String, Void, String> {
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(url).post(formBody.build()).build();
             Response response = okHttpClient.newCall(request).execute();
-            Log.d("code", String.valueOf(response.code())) ;
-            String resJson = response.body().string();
-            Log.d("OKhttp", "res try ==>" + resJson);
 
-            return resJson;
+            if(response.code() == 200){
+                //status 200 OK
+                String resJson = response.body().string();
+                return resJson;
+            }else{
+                Log.d("OKhttp", "status code ==>" + response.code());
+                return null;
+            }
         }catch (Exception e){
             Log.d("OKhttp", "res try ==>" + e.toString());
         }
