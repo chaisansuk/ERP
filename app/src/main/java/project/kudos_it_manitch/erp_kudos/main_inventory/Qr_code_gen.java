@@ -105,8 +105,11 @@ public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.R
 
         // Here, thisActivity is the current activity
 
+        // check permission camera != PERMISSION_GRANTED ไม่ได้เปิดการใช้งาน
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 // not permission camera
+
+                // call method Request_permission
                 Request_permission();
 
         }else{
@@ -122,9 +125,11 @@ public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.R
 
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
         mScannerView.startCamera();         // Start camera
+
     }
 
     private void Request_permission() {
+        // show dialog request permission
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
     }
 
@@ -137,25 +142,27 @@ public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.R
         Log.e("handler", rawResult.getBarcodeFormat().toString()); // Prints the scan format (qrcode)
 
         // show the scanner result into dialog box.
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Scan Result");
-        builder.setMessage(rawResult.getText());
-        AlertDialog alert1 = builder.create();
-        alert1.show();
+//        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+//        builder.setTitle("Scan Result");
+//        builder.setMessage(rawResult.getText());
+//        AlertDialog alert1 = builder.create();
+//        alert1.show();
 
-        // If you would like to resume scanning, call this method below:
-        //mScannerView.resumeCameraPreview(this);
+        Toast.makeText(this, rawResult.getText(), Toast.LENGTH_SHORT).show();
+
+//         If you would like to resume scanning, call this method below:
+        mScannerView.resumeCameraPreview(this);
     }
 
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
+        // event affter dialog request permission
         if(requestCode == CAMERA_PERMISSION_REQUEST_CODE){
 
+            // check PERMISSION_GRANTED
             if(grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
-
                 ScanQr();
             }else{
                 Toast.makeText(this, "ไม่สามารถใช้งาน กล้องได้", Toast.LENGTH_SHORT).show();
