@@ -96,4 +96,4 @@ public class MainPageApproveActivity extends AppCompatActivity {
         dialog.show();
     }
 
-}
+}//logout main
