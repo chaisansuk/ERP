@@ -1,14 +1,21 @@
 package project.kudos_it_manitch.erp_kudos.main_inventory;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
@@ -20,6 +27,8 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import project.kudos_it_manitch.erp_kudos.R;
 
 public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.ResultHandler {
+    private static final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 0;
+    private static final int CAMERA_PERMISSION_REQUEST_CODE = 100;
     private ZXingScannerView mScannerView;
     ImageView imageView;
     Button pin;
@@ -94,15 +103,30 @@ public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.R
     }
     public void QrScanner(View view){
 
+        // Here, thisActivity is the current activity
 
+        if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+                // not permission camera
+                Request_permission();
+
+        }else{
+            ScanQr();
+        }
+
+
+    }
+
+    private void ScanQr(){
         mScannerView = new ZXingScannerView(this);   // Programmatically initialize the scanner view
         setContentView(mScannerView);
 
         mScannerView.setResultHandler(this); // Register ourselves as a handler for scan results.
         mScannerView.startCamera();         // Start camera
-
     }
 
+    private void Request_permission() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, CAMERA_PERMISSION_REQUEST_CODE);
+    }
 
 
     @Override
@@ -122,9 +146,23 @@ public class Qr_code_gen extends AppCompatActivity implements ZXingScannerView.R
         // If you would like to resume scanning, call this method below:
         //mScannerView.resumeCameraPreview(this);
     }
-//    @Override
-//    public void onPause() {
-//        super.onPause();
-//        mScannerView.stopCamera();           // Stop camera on pause
-//    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == CAMERA_PERMISSION_REQUEST_CODE){
+
+            if(grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+
+                ScanQr();
+            }else{
+                Toast.makeText(this, "ไม่สามารถใช้งาน กล้องได้", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+    }
 }
+
+

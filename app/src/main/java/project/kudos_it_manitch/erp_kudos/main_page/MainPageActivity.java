@@ -195,7 +195,7 @@ public class MainPageActivity extends AppCompatActivity {
                 Integer sum = pr_approve + po_approve;
 
                 text_count_approve.setText(String.valueOf(sum));
-                
+
             }else{
                 Toast.makeText(getApplicationContext(), "ไม่สามารถ เชื่อต่อได้", Toast.LENGTH_SHORT).show();
             }
