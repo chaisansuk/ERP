@@ -21,10 +21,8 @@ import org.json.JSONObject;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 import project.kudos_it_manitch.erp_kudos.R;
-import project.kudos_it_manitch.erp_kudos.approve_home.ListPrActivity;
 import project.kudos_it_manitch.erp_kudos.config.Config;
 import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
-import project.kudos_it_manitch.erp_kudos.inventory_home.ListPrActivity2;
 import project.kudos_it_manitch.erp_kudos.main_home.MainActivityHome;
 
 
@@ -56,8 +54,6 @@ public class MainPageActivity extends AppCompatActivity {
         //SharedPreferences.Editor editor = sharedPreferences.edit();
 
 
-
-
         findViewById(R.id.approvebtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,23 +66,8 @@ public class MainPageActivity extends AppCompatActivity {
                 startActivity(new Intent(MainPageActivity.this,MainPageICActivity.class));
             }
         });
-        findViewById(R.id.fablist_approve).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainPageActivity.this,ListPrActivity.class));
-            }
-        });
-        findViewById(R.id.fablist_ic).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainPageActivity.this,ListPrActivity2.class));
-            }
-        });
-
-
 
         setSupportActionBar(toolbar);
-
     }
 
     @Override
