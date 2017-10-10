@@ -47,11 +47,11 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true">
             <Button
-                android:id="@+id/pobtn"
+                android:id="@+id/prbtn"
                 style="@android:style/Widget.DeviceDefault.Button.Inset"
                 android:layout_width="288dp"
                 android:layout_height="83dp"
-                android:text="PO"
+                android:text="PR"
                 android:textColor="@color/QRCodeBlackColor"
                 app:srcCompat="@drawable/engineer1"
                 android:layout_centerVertical="true"
@@ -59,7 +59,7 @@
 
         </RelativeLayout>
         <TextView
-            android:id="@+id/text_count_po"
+            android:id="@+id/text_count_pr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/item_count"
@@ -84,23 +84,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
             <Button
-                android:id="@+id/prbtn"
+                android:id="@+id/pobtn"
                 style="@android:style/Widget.DeviceDefault.Button.Inset"
                 android:layout_width="288dp"
                 android:layout_height="84dp"
-                android:text="PR"
+                android:text="PO"
                 android:textColor="@color/QRCodeBlackColor"
                 app:srcCompat="@drawable/owner1" />
         </RelativeLayout>
         <TextView
-        android:id="@+id/text_count_pr"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/item_count"
-        android:text="0"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:layout_alignRight="@+id/relative1"
+            android:id="@+id/text_count_po"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/item_count"
+            android:text="0"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_alignRight="@+id/relative1"
         />
     </RelativeLayout>
 
