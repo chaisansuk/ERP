@@ -2,6 +2,7 @@ package project.kudos_it_manitch.erp_kudos.approve_home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
@@ -21,10 +23,12 @@ import org.json.JSONObject;
 import project.kudos_it_manitch.erp_kudos.R;
 
 
-public class ListPrActivity extends AppCompatActivity {
+public class ListApproveActivity extends AppCompatActivity {
     //Explicit
     private ListView listView;
-
+    private String type;
+    private SharedPreferences sharedPreferences;
+    private String m_id, m_code;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,19 +44,24 @@ public class ListPrActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        //Test List View
+        type = getIntent().getStringExtra("type");
+        sharedPreferences = getApplicationContext().getSharedPreferences("session_member", Context.MODE_PRIVATE);
+        m_id = sharedPreferences.getString("m_id","false");
+        m_code = sharedPreferences.getString("m_code", "false");
 
-//        String[] testStrings = new String[]{"test1", "test2", "test3", "test4", "test5"};
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1, testStrings);
-//        listView.setAdapter(adapter);
+        Toast.makeText(this, type+" "+m_id+" "+m_code, Toast.LENGTH_SHORT).show();
 
         //Call AsyncTask
-        SynPr synPr = new SynPr(this, listView);
-        synPr.execute();
+//        SynPr synPr = new SynPr(this, listView);
+//        synPr.execute();
 
     }   // Main Method
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        
+    }
 
     private class SynPr extends AsyncTask<Void, Void, String> {
 
@@ -117,7 +126,7 @@ public class ListPrActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent intent = new Intent(ListPrActivity.this, ShowDetailPrActivity.class);
+                        Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
 
                         startActivity(intent);
 

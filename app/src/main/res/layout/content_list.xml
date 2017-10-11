@@ -5,7 +5,7 @@
     android:id="@+id/swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".approve_home.ListPrActivity"
+    tools:context=".approve_home.ListApproveActivity"
     tools:showIn="@layout/activity_list"
     android:background="#dcdfe3">
 

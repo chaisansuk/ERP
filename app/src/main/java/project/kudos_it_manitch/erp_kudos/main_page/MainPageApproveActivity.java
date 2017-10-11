@@ -15,10 +15,9 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import project.kudos_it_manitch.erp_kudos.R;
-import project.kudos_it_manitch.erp_kudos.approve_home.ListPrActivity;
+import project.kudos_it_manitch.erp_kudos.approve_home.ListApproveActivity;
 import project.kudos_it_manitch.erp_kudos.config.Config;
 import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
-import project.kudos_it_manitch.erp_kudos.inventory_home.ListPrActivity2;
 import project.kudos_it_manitch.erp_kudos.main_home.MainActivityHome;
 
 
@@ -38,16 +37,23 @@ public class MainPageApproveActivity extends AppCompatActivity {
         text_count_pr = (TextView) findViewById(R.id.text_count_pr);
 
 
-        findViewById(R.id.pobtn).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainPageApproveActivity.this,ListPrActivity.class));
-            }
-        });
         findViewById(R.id.prbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPageApproveActivity.this,ListPrActivity2.class));
+                Intent intent = new Intent(getApplicationContext(),ListApproveActivity.class);
+                intent.putExtra("type","pr");
+                startActivity(intent);
+                //MainPageApproveActivity.this.finish();
+            }
+        });
+        findViewById(R.id.pobtn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(),ListApproveActivity.class);
+                intent.putExtra("type","po");
+                startActivity(intent);
+                //MainPageApproveActivity.this.finish();
             }
         });
 
