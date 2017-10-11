@@ -74,6 +74,7 @@ public class ShowDetailPrActivity extends AppCompatActivity implements View.OnCl
         projectnameTextView = (TextView) findViewById(R.id.date);
         projectnameTextView = (TextView) findViewById(R.id.txname1);
         projectstatusTextView = (TextView) findViewById(R.id.run_number);
+
     }
 
 

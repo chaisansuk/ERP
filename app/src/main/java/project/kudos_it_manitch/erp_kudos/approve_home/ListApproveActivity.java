@@ -1,11 +1,14 @@
 package project.kudos_it_manitch.erp_kudos.approve_home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,7 +32,6 @@ public class ListApproveActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
 
         //Bind Widget
         listView = (ListView) findViewById(R.id.listpr);
@@ -98,6 +100,14 @@ public class ListApproveActivity extends AppCompatActivity {
                     Adapter_approve adapter_approve = new Adapter_approve(getApplicationContext(), run_number, projects, project_name, create_user, create_date, types);
 //
                     listView.setAdapter(adapter_approve);
+                    listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
+                        startActivity(intent);
+                    }// onItemClick
+                });
+
                 } else {
                     Toast.makeText(this, "false", Toast.LENGTH_SHORT).show();
                 }

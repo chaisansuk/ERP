@@ -47,11 +47,10 @@ public class Adapter_approve extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view1 = layoutInflater.inflate(R.layout.my_listview, viewGroup, false);
-
         TextView project_nameTextView = view1.findViewById(R.id.project_name);
-        ImageView img_typeImageView = view1.findViewById(R.id.img_type);
+        ImageView img_type = view1.findViewById(R.id.img_type);
         project_nameTextView.setText(project_name[i]);
-        img_typeImageView.getResources().getDrawable(R.drawable.po_icon1);
+//        img_type.getResources().getDrawable(R.drawable.pr_icon1);
         return view1;
     }
 }
