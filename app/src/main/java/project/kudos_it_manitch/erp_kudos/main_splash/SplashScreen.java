@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -94,36 +95,42 @@ public class SplashScreen extends Activity {
             Config config = new Config();
 
             String body = "[{'key':'m_user','value':'"+m_user+"'},{'key':'m_pass','value':'"+m_pass+"'}]";
-        Log.d("444",body);
+
 
             GetService getService = new GetService(getApplicationContext(),config.getSerlogin(),body);
             getService.execute();
         try {
-            String res = getService.get().toString();
+            String res = getService.get();
             Log.d("444",res);
-            JSONObject jsonObject = new JSONObject(res);
+            if(res!=null){
 
-            boolean login_status = jsonObject.getBoolean("status");
-            String data_obj = jsonObject.getString("data");
-            JSONArray jsonArray_data = new JSONArray(data_obj);
+                JSONObject jsonObject = new JSONObject(res.toString());
 
-            if (login_status==true) {
-                JSONObject data_user = jsonArray_data.getJSONObject(0);
-                // intent to home page list
-                Intent intent = new Intent(getApplicationContext(),MainPageActivity.class);
-                intent.putExtra("data",data_user.toString());
-                startActivity(intent);
+                boolean login_status = jsonObject.getBoolean("status");
+                String data_obj = jsonObject.getString("data");
+                JSONArray jsonArray_data = new JSONArray(data_obj);
 
-                SplashScreen.this.finish();
-            }else {
-                Intent intent =new Intent(SplashScreen.this,MainActivityHome.class);
-                startActivity(intent);
-                // close this activity
-                SplashScreen.this.finish();
+                if (login_status==true) {
+                    JSONObject data_user = jsonArray_data.getJSONObject(0);
+                    // intent to home page list
+                    Intent intent = new Intent(getApplicationContext(),MainPageActivity.class);
+                    intent.putExtra("data",data_user.toString());
+                    startActivity(intent);
+
+                    SplashScreen.this.finish();
+                }else {
+                    Intent intent =new Intent(SplashScreen.this,MainActivityHome.class);
+                    startActivity(intent);
+                    // close this activity
+                    SplashScreen.this.finish();
+                }
+            }else{
+                 Log.d("home","null");
             }
 
         }catch (Exception e){
-
+            Log.d("home",e.toString());
+            //Toast.makeText(this, "ไม่สามารถเชื่อต่อได้", Toast.LENGTH_SHORT).show();
         }
 
 
