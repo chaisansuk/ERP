@@ -51,7 +51,7 @@ public class Adapter_approve extends BaseAdapter {
         TextView project_nameTextView = view1.findViewById(R.id.project_name);
         ImageView img_typeImageView = view1.findViewById(R.id.img_type);
         project_nameTextView.setText(project_name[i]);
-        //img_typeImageView.getResources().getDrawable(R.drawable.po_icon1);
+        img_typeImageView.getResources().getDrawable(R.drawable.po_icon1);
         return view1;
     }
 }

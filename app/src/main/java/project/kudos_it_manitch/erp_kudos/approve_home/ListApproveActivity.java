@@ -1,21 +1,13 @@
 package project.kudos_it_manitch.erp_kudos.approve_home;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
-
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -40,9 +32,7 @@ public class ListApproveActivity extends AppCompatActivity {
 
 
         //Bind Widget
-        listView = (ListView) findViewById(R.id.list_view_approve);
-
-
+        listView = (ListView) findViewById(R.id.listpr);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
@@ -83,43 +73,28 @@ public class ListApproveActivity extends AppCompatActivity {
 
 
                     JSONArray array_list_approve = json_result.getJSONArray("data");
-
                     Log.d("count_array ", String.valueOf(array_list_approve.length()));
 
-
                     run_number = new String[array_list_approve.length()];
-
                     projects = new String[array_list_approve.length()];
-
                     project_name = new String[array_list_approve.length()];
-
                     create_user = new String[array_list_approve.length()];
-
                     create_date = new String[array_list_approve.length()];
-
                     types = new String[array_list_approve.length()];
-
 
                     for (int i = 0; i < array_list_approve.length(); i++) {
 
                         JSONObject item_obj = array_list_approve.getJSONObject(i);
 
                         run_number[i] = item_obj.getString("app_pr");
-
                         projects[i] = item_obj.getString("app_project");
-
                         project_name[i] = item_obj.getString("project_name");
-
                         create_user[i] = item_obj.getString("creatuser");
-
                         create_date[i] = item_obj.getString("creatudate");
-
                         types[i] = item_obj.getString("type");
-
                     }
 
 //                    Log.d("count", String.valueOf(create_date.length));
-
                     Adapter_approve adapter_approve = new Adapter_approve(getApplicationContext(), run_number, projects, project_name, create_user, create_date, types);
 //
                     listView.setAdapter(adapter_approve);
@@ -137,84 +112,84 @@ public class ListApproveActivity extends AppCompatActivity {
 
     }
 
-    private class SynPr extends AsyncTask<Void, Void, String> {
-
-        //Explicit
-        private Context context;
-        private ListView synListView;
-        private String[] projectnameStrings, projectdetailStrings;
-
-        private static final String urlJSON = "https://www.cloudmeka.com/getdata_projectname.php";
-
-        public SynPr(Context context,
-                     ListView synListView) {
-            this.context = context;
-            this.synListView = synListView;
-        }
-
-        @Override
-        protected String doInBackground(Void... voids) {
-
-            try {
-                OkHttpClient okHttpClient = new OkHttpClient();
-                Request.Builder builder = new Request.Builder();
-                Request request = builder.url(urlJSON).build();
-                Response response = okHttpClient.newCall(request).execute();
-                return response.body().string();
-
-            } catch (Exception e) {
-                return null;
-            }
-
-        }   // doInBack
-
-        @Override
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            Log.d("22JulyV1", "JSON ==> " + s);
-
-            try {
-
-                JSONArray jsonArray = new JSONArray(s);
-
-                projectnameStrings = new String[jsonArray.length()];
-                projectdetailStrings = new String[jsonArray.length()];
-
-
-                for (int i = 0; i < jsonArray.length(); i += 1) {
-
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-
-                    projectnameStrings[i] = jsonObject.getString("project_name");
-                    projectdetailStrings[i] = jsonObject.getString("project_detail");
-
-                }   // for
-
-                //Create ListView
-                MyAdapter myAdapter = new MyAdapter(context, projectnameStrings, projectdetailStrings);
-                synListView.setAdapter(myAdapter);
-
-
-                synListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                        Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
-
-                        startActivity(intent);
-
-                    }// onItemClick
-                });
-
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-        }   // onPost
-
-    }   // SynShopCenter Class
+//    private class SynPr extends AsyncTask<Void, Void, String> {
+//
+//        //Explicit
+//        private Context context;
+//        private ListView synListView;
+//        private String[] projectnameStrings, projectdetailStrings;
+//
+//        private static final String urlJSON = "https://www.cloudmeka.com/app_controller/get_list_approve";
+//
+//        public SynPr(Context context,
+//                     ListView synListView) {
+//            this.context = context;
+//            this.synListView = synListView;
+//        }
+//
+//        @Override
+//        protected String doInBackground(Void... voids) {
+//
+//            try {
+//                OkHttpClient okHttpClient = new OkHttpClient();
+//                Request.Builder builder = new Request.Builder();
+//                Request request = builder.url(urlJSON).build();
+//                Response response = okHttpClient.newCall(request).execute();
+//                return response.body().string();
+//
+//            } catch (Exception e) {
+//                return null;
+//            }
+//
+//        }   // doInBack
+//
+//        @Override
+//        protected void onPostExecute(String s) {
+//            super.onPostExecute(s);
+//
+//            Log.d("22JulyV1", "JSON ==> " + s);
+//
+//            try {
+//
+//                JSONArray jsonArray = new JSONArray(s);
+//
+//                projectnameStrings = new String[jsonArray.length()];
+//                projectdetailStrings = new String[jsonArray.length()];
+//
+//
+//                for (int i = 0; i < jsonArray.length(); i += 1) {
+//
+//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
+//
+//                    projectnameStrings[i] = jsonObject.getString("project_name");
+//                    projectdetailStrings[i] = jsonObject.getString("project_detail");
+//
+//                }   // for
+//
+//                //Create ListView
+//                MyAdapter myAdapter = new MyAdapter(context, projectnameStrings, projectdetailStrings);
+//                synListView.setAdapter(myAdapter);
+//
+//
+//                synListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//
+//                        Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
+//
+//                        startActivity(intent);
+//
+//                    }// onItemClick
+//                });
+//
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        }   // onPost
+//
+//    }   // SynShopCenter Class
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -63,7 +63,7 @@ public class ListPrActivity2 extends AppCompatActivity {
         private ListView synListView;
         private String[] projectnameStrings, projectstatusStrings;
 
-        private static final String urlJSON = "https://www.cloudmeka.com/getdata_projectname.php";
+        private static final String urlJSON = "https://www.cloudmeka.com/app_controller/get_list_approve";
         public SynPr(Context context,
                              ListView synListView) {
             this.context = context;
