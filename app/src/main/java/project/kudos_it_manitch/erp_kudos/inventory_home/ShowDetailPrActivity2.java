@@ -72,9 +72,9 @@ public class ShowDetailPrActivity2 extends AppCompatActivity implements View.OnC
     }
 
     private void bindWidget() {
-        projectnameTextView = (TextView) findViewById(R.id.txname);
+        projectnameTextView = (TextView) findViewById(R.id.date);
         projectnameTextView = (TextView) findViewById(R.id.txname1);
-        projectstatusTextView = (TextView) findViewById(R.id.txstatus);
+        projectstatusTextView = (TextView) findViewById(R.id.run_number);
     }
 
 

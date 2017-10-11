@@ -19,6 +19,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import project.kudos_it_manitch.erp_kudos.R;
+import project.kudos_it_manitch.erp_kudos.approve_home.ShowDetailPrActivity;
 
 
 public class ListPrActivity2 extends AppCompatActivity {
@@ -119,7 +120,7 @@ public class ListPrActivity2 extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Intent intent = new Intent(ListPrActivity2.this, ShowDetailPrActivity2.class);
+                        Intent intent = new Intent(ListPrActivity2.this, ShowDetailPrActivity.class);
 
                         startActivity(intent);
 

@@ -47,8 +47,8 @@ public class MyAdapter extends BaseAdapter {
         View view2 = layoutInflater.inflate(R.layout.my_listview2, viewGroup, false);
 
         //Bind Widget
-        TextView projectnameTextView = (TextView) view2.findViewById(R.id.txname);
-        TextView projectstatusTextView = (TextView) view2.findViewById(R.id.txstatus);
+        TextView projectnameTextView = (TextView) view2.findViewById(R.id.date);
+        TextView projectstatusTextView = (TextView) view2.findViewById(R.id.run_number);
 
 
         //Show Text

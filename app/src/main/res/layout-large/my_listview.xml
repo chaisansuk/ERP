@@ -15,7 +15,7 @@
         android:layout_width="562dp"
         android:layout_height="112dp"
         android:text="New Text"
-        android:id="@+id/txuser"
+        android:id="@+id/project_name"
         android:textSize="15dp"
         android:textStyle="bold"
         tools:layout_constraintTop_creator="1"
@@ -33,14 +33,14 @@
         android:layout_width="113dp"
         android:layout_height="30dp"
         android:text="New Text"
-        android:id="@+id/txname"
+        android:id="@+id/date"
         android:textSize="15dp"
         tools:layout_conversion_absoluteX="254dp"
         tools:layout_conversion_absoluteY="15dp"
         tools:layout_conversion_absoluteWidth="84dp"
         tools:layout_conversion_absoluteHeight="23dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/txstatus"
+        app:layout_constraintBottom_toTopOf="@+id/run_number"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
         android:layout_marginRight="8dp"
@@ -52,7 +52,7 @@
 
 
     <TextView
-        android:id="@+id/txstatus"
+        android:id="@+id/run_number"
         android:layout_width="564dp"
         android:layout_height="55dp"
         android:text="New Text"
@@ -63,10 +63,10 @@
         tools:layout_conversion_absoluteWidth="340dp"
         tools:layout_conversion_absoluteHeight="62dp"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="@+id/txuser"
+        app:layout_constraintRight_toRightOf="@+id/project_name"
         android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="@+id/txuser"
-        app:layout_constraintBottom_toBottomOf="@+id/txuser"
+        app:layout_constraintLeft_toLeftOf="@+id/project_name"
+        app:layout_constraintBottom_toBottomOf="@+id/project_name"
         android:layout_marginBottom="0dp" />
 
 

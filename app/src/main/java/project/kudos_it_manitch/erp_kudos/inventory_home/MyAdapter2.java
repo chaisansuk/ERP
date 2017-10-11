@@ -44,11 +44,11 @@ public class MyAdapter2 extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view2 = layoutInflater.inflate(R.layout.my_listview2, viewGroup, false);
+        View view2 = layoutInflater.inflate(R.layout.my_listview, viewGroup, false);
 
         //Bind Widget
-        TextView projectnameTextView = (TextView) view2.findViewById(R.id.txname);
-        TextView projectstatusTextView = (TextView) view2.findViewById(R.id.txstatus);
+        TextView projectnameTextView = (TextView) view2.findViewById(R.id.date);
+        TextView projectstatusTextView = (TextView) view2.findViewById(R.id.run_number);
 
 
         //Show Text

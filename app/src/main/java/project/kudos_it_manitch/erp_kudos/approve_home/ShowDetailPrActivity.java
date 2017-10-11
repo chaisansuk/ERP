@@ -71,9 +71,9 @@ public class ShowDetailPrActivity extends AppCompatActivity implements View.OnCl
     }
 
     private void bindWidget() {
-        projectnameTextView = (TextView) findViewById(R.id.txname);
+        projectnameTextView = (TextView) findViewById(R.id.date);
         projectnameTextView = (TextView) findViewById(R.id.txname1);
-        projectstatusTextView = (TextView) findViewById(R.id.txstatus);
+        projectstatusTextView = (TextView) findViewById(R.id.run_number);
     }
 
 
