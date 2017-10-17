@@ -44,7 +44,7 @@ public class MyAdapter2 extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
 
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view2 = layoutInflater.inflate(R.layout.my_listview, viewGroup, false);
+        View view2 = layoutInflater.inflate(R.layout.main_listview_pr, viewGroup, false);
 
         //Bind Widget
         TextView projectnameTextView = (TextView) view2.findViewById(R.id.date);

@@ -1,80 +1,119 @@
 package project.kudos_it_manitch.erp_kudos.approve_home;
 
-import android.content.Intent;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
+import android.util.Log;
+import android.view.Menu;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import project.kudos_it_manitch.erp_kudos.R;
-import project.kudos_it_manitch.erp_kudos.main_inventory.Qr_code_gen;
+import project.kudos_it_manitch.erp_kudos.approve_home.approve_pr.Adapter_approve_pr;
+import project.kudos_it_manitch.erp_kudos.config.Config;
+import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
 
 
-public class ShowDetailPrActivity extends AppCompatActivity implements View.OnClickListener {
+public class ShowDetailPrActivity extends AppCompatActivity  {
 
     //Explicit
-    private String projectnameStrings, projectstatusStrings;
-    private TextView projectnameTextView, projectstatusTextView;
-    Button btn_update;
-
+    private ListView listView;
+    private SharedPreferences sharedPreferences;
+    private String m_id, m_code ,type,run_number,projects,m_user;
+    private String[] lock, user, approve_sequence,approve,disapprove,reject,message,id_item;
+    private Button approvebtn;
+    private Adapter_approve_pr adapter_approve_pr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_show_detail2);
+        setContentView(R.layout.activity_list_approve_pr);
 
         //Bind Widget
-        bindWidget();
+        listView = (ListView) findViewById(R.id.list_approve_pr);
+        approvebtn = (Button) findViewById(R.id.approvebtn);
+        Button disapprovebtn = (Button) findViewById(R.id.disapprovebtn);
+        Button rejectbtn = (Button) findViewById(R.id.rejectbtn);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //show Text
-        showText();
-        findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ShowDetailPrActivity.this,Qr_code_gen.class));
-            }
-        });
+
+        type = getIntent().getStringExtra("type");
+        run_number = getIntent().getStringExtra("doc_no");
+        projects = getIntent().getStringExtra("pj_code");
+
+        sharedPreferences = getApplicationContext().getSharedPreferences("session_member", Context.MODE_PRIVATE);
+        m_id = sharedPreferences.getString("m_id", "false");
+        m_code = sharedPreferences.getString("m_code", "false");
+        m_user = sharedPreferences.getString("m_user", "false");
+
+
+
 
     }//onCreate
 
     @Override
-    public void onClick(View v){
-        switch(v.getId()){
+    protected void onStart() {
+        super.onStart();
+        show_list_view();
+    }
 
-            case R.id.btn_update:
-            {
-                update();
-                break;
+    public void show_list_view() {
+
+        Config config = new Config();
+        String body = "[{'key':'pj_code','value':'" + projects + "'},{'key':'m_id','value':'" + m_id + "'},{'key':'doc_no','value':'" + run_number + "'},{'key':'username','value':'" + m_user + "'},{'key':'type','value':'" + type + "'}]";
+
+        GetService getService = new GetService(getApplicationContext(), config.getDetailSequenc(), body);
+        try {
+            getService.execute();
+            String res_json = getService.get();
+            Log.d("res_json",res_json);
+
+            if (res_json != null) {
+// array res json
+                JSONArray jsonArray = new JSONArray(res_json.toString());
+                lock = new String[jsonArray.length()];
+                user = new String[jsonArray.length()];
+                approve_sequence = new String[jsonArray.length()];
+                approve = new String[jsonArray.length()];
+                disapprove = new String[jsonArray.length()];
+                reject = new String[jsonArray.length()];
+                message = new String[jsonArray.length()];
+                id_item = new String[jsonArray.length()];
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject item_obj = jsonArray.getJSONObject(i);
+                    lock[i] = item_obj.getString("lock");
+                    user[i] = item_obj.getString("user");
+                    approve_sequence[i] = item_obj.getString("approve_sequence");
+                    approve[i] = item_obj.getString("approve");
+                    disapprove[i] = item_obj.getString("disapprove");
+                    reject[i] = item_obj.getString("reject");
+                    message[i] = item_obj.getString("message");
+                    id_item[i] = item_obj.getString("id_item");
+                }
+               adapter_approve_pr = new Adapter_approve_pr(getApplicationContext(),lock, user, approve_sequence,approve,disapprove,reject,message,id_item,run_number,projects,m_user,type);
+                listView.setAdapter(adapter_approve_pr);
+//
+            } else {
+                Toast.makeText(this, "ไม่สามารถ เชื่อมต่อได้", Toast.LENGTH_SHORT).show();
             }
-
+        } catch (Exception e) {
+            Toast.makeText(this, "error :"+e.toString(), Toast.LENGTH_SHORT).show();
         }
-    }
 
-    public void update(){
-// Your update algorithm
-        Toast.makeText(getApplicationContext(), "update" , Toast.LENGTH_SHORT).show();
-    }
-
-    public void clickBackShowDetail(View view) {
-        finish();
-    }
-
-    private void showText() {
-        projectnameStrings = getIntent().getStringExtra("project_name");
-        projectstatusStrings = getIntent().getStringExtra("project_status");
-
-        projectnameTextView.setText("project_name");
-
-        projectstatusTextView.setText("Status : " + "project_status");
 
     }
 
-    private void bindWidget() {
-        projectnameTextView = (TextView) findViewById(R.id.date);
-        projectnameTextView = (TextView) findViewById(R.id.txname1);
-        projectstatusTextView = (TextView) findViewById(R.id.run_number);
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_listview, menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
 

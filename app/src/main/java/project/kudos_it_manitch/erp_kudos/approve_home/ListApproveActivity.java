@@ -25,7 +25,7 @@ public class ListApproveActivity extends AppCompatActivity {
     private ListView listView;
     private String type;
     private SharedPreferences sharedPreferences;
-    private String m_id, m_code;
+    private String m_id, m_code, m_user;
     private String[] run_number, projects, project_name, create_user, create_date, types;
 
     @Override
@@ -42,7 +42,7 @@ public class ListApproveActivity extends AppCompatActivity {
         sharedPreferences = getApplicationContext().getSharedPreferences("session_member", Context.MODE_PRIVATE);
         m_id = sharedPreferences.getString("m_id", "false");
         m_code = sharedPreferences.getString("m_code", "false");
-
+        m_user = sharedPreferences.getString("m_user", "false");
 
         //Call AsyncTask
 //        SynPr synPr = new SynPr(this, listView);
@@ -85,9 +85,7 @@ public class ListApproveActivity extends AppCompatActivity {
                     types = new String[array_list_approve.length()];
 
                     for (int i = 0; i < array_list_approve.length(); i++) {
-
                         JSONObject item_obj = array_list_approve.getJSONObject(i);
-
                         run_number[i] = item_obj.getString("app_pr");
                         projects[i] = item_obj.getString("app_project");
                         project_name[i] = item_obj.getString("project_name");
@@ -104,6 +102,9 @@ public class ListApproveActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
+                        intent.putExtra("type",types[position]);
+                        intent.putExtra("doc_no",run_number[position]);
+                        intent.putExtra("pj_code",projects[position]);
                         startActivity(intent);
                     }// onItemClick
                 });
@@ -122,84 +123,6 @@ public class ListApproveActivity extends AppCompatActivity {
 
     }
 
-//    private class SynPr extends AsyncTask<Void, Void, String> {
-//
-//        //Explicit
-//        private Context context;
-//        private ListView synListView;
-//        private String[] projectnameStrings, projectdetailStrings;
-//
-//        private static final String urlJSON = "https://www.cloudmeka.com/app_controller/get_list_approve";
-//
-//        public SynPr(Context context,
-//                     ListView synListView) {
-//            this.context = context;
-//            this.synListView = synListView;
-//        }
-//
-//        @Override
-//        protected String doInBackground(Void... voids) {
-//
-//            try {
-//                OkHttpClient okHttpClient = new OkHttpClient();
-//                Request.Builder builder = new Request.Builder();
-//                Request request = builder.url(urlJSON).build();
-//                Response response = okHttpClient.newCall(request).execute();
-//                return response.body().string();
-//
-//            } catch (Exception e) {
-//                return null;
-//            }
-//
-//        }   // doInBack
-//
-//        @Override
-//        protected void onPostExecute(String s) {
-//            super.onPostExecute(s);
-//
-//            Log.d("22JulyV1", "JSON ==> " + s);
-//
-//            try {
-//
-//                JSONArray jsonArray = new JSONArray(s);
-//
-//                projectnameStrings = new String[jsonArray.length()];
-//                projectdetailStrings = new String[jsonArray.length()];
-//
-//
-//                for (int i = 0; i < jsonArray.length(); i += 1) {
-//
-//                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-//
-//                    projectnameStrings[i] = jsonObject.getString("project_name");
-//                    projectdetailStrings[i] = jsonObject.getString("project_detail");
-//
-//                }   // for
-//
-//                //Create ListView
-//                MyAdapter myAdapter = new MyAdapter(context, projectnameStrings, projectdetailStrings);
-//                synListView.setAdapter(myAdapter);
-//
-//
-//                synListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//
-//                        Intent intent = new Intent(ListApproveActivity.this, ShowDetailPrActivity.class);
-//
-//                        startActivity(intent);
-//
-//                    }// onItemClick
-//                });
-//
-//
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//        }   // onPost
-//
-//    }   // SynShopCenter Class
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

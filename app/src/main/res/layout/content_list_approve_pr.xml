@@ -5,24 +5,22 @@
     android:id="@+id/swipe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".approve_home.ListApproveActivity"
-    tools:showIn="@layout/activity_list"
+    tools:context=".approve_home.ShowDetailPrActivity"
+    tools:showIn="@layout/activity_list_approve_pr"
     android:background="#dcdfe3">
 
     <ListView
-        android:id="@+id/listpr"
-        android:layout_width="400dp"
-        android:layout_height="585dp"
-        android:layout_marginBottom="0dp"
+        android:id="@+id/list_approve_pr"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:divider="#dcdfe3"
         android:dividerHeight="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteY="116dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </android.support.constraint.ConstraintLayout>
