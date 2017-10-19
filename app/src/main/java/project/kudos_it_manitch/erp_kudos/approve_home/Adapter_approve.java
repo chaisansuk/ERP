@@ -52,7 +52,7 @@ public class Adapter_approve extends BaseAdapter {
         TextView create_userTextView = view1.findViewById(R.id.create_user);
         TextView create_dateTextView = view1.findViewById(R.id.date);
         ImageView img_type = view1.findViewById(R.id.img_type);
-
+        ImageView next = view1.findViewById(R.id.next);
         if(types[i].equals("pr")){
             img_type.setImageResource(R.drawable.pr_icon1);
         }else if(types[i].equals("po")){
@@ -60,6 +60,7 @@ public class Adapter_approve extends BaseAdapter {
         }else{
 
         }
+        next.setImageResource(R.drawable.next);
         project_nameTextView.setText(project_name[i]);
         run_numberTextView.setText(run_number[i]);
         create_userTextView.setText(create_user[i]);

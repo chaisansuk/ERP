@@ -13,7 +13,7 @@ import android.widget.Toast;
 import org.json.JSONObject;
 
 import project.kudos_it_manitch.erp_kudos.R;
-import project.kudos_it_manitch.erp_kudos.approve_home.ListApproveActivity;
+import project.kudos_it_manitch.erp_kudos.approve_home.approve_pr_pjname.ListPjNameActivity;
 import project.kudos_it_manitch.erp_kudos.config.Config;
 import project.kudos_it_manitch.erp_kudos.getservice_okhttp.GetService;
 
@@ -37,7 +37,7 @@ public class MainPageApproveActivity extends AppCompatActivity {
         findViewById(R.id.prbtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),ListApproveActivity.class);
+                Intent intent = new Intent(getApplicationContext(),ListPjNameActivity.class);
                 intent.putExtra("type","pr");
                 startActivity(intent);
                 //MainPageApproveActivity.this.finish();
@@ -47,7 +47,7 @@ public class MainPageApproveActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(),ListApproveActivity.class);
+                Intent intent = new Intent(getApplicationContext(),ListPjNameActivity.class);
                 intent.putExtra("type","po");
                 startActivity(intent);
                 //MainPageApproveActivity.this.finish();

@@ -42,7 +42,7 @@ public class MainPageActivity extends AppCompatActivity {
 
         nameUser = (TextView) findViewById(R.id.nameUser);
         text_count_approve = (TextView) findViewById(R.id.text_count_approve);
-        text_count_ic = (TextView) findViewById(R.id.text_count_ic);
+//        text_count_ic = (TextView) findViewById(R.id.text_count_ic);
         circleImageUser = (CircleImageView) findViewById(R.id.imageUser);
 
         approvebtn = (Button) findViewById(R.id.approvebtn);
@@ -133,26 +133,16 @@ public class MainPageActivity extends AppCompatActivity {
             Picasso.with(MainPageActivity.this).load(path_img).into(circleImageUser);
             JSONObject permissionobj = new JSONObject(data_json.getString("permission"));
 
-
             boolean approve_ic;
 
             JSONObject obj_approve = permissionobj.getJSONObject("approve");
             approve_ic = permissionobj.getBoolean("ic");
 
 
-
-            // get nonti
-
-
-
-            // get nonti
-            //Toast.makeText(getApplicationContext(), obj_approve.toString(), Toast.LENGTH_SHORT).show();
-
             if(obj_approve.getBoolean("pr") == true || obj_approve.getBoolean("po") == true){
                 approvebtn.setEnabled(true);
             }else{
-//              approvebtn.setBackgroundColor(Color.DKGRAY);
-//              approvebtn.setBackgroundColor(Color.alpha((int) 0.3));
+//                approvebtn.setDi(Color.DKGRAY);
                 approvebtn.setEnabled(false);
             }
 

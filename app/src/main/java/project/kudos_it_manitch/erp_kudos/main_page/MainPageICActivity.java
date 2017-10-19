@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import project.kudos_it_manitch.erp_kudos.R;
 import project.kudos_it_manitch.erp_kudos.approve_home.ListApproveActivity;
-import project.kudos_it_manitch.erp_kudos.inventory_home.ListPrActivity2;
+import project.kudos_it_manitch.erp_kudos.approve_home.approve_pr_pjname.ListPjNameActivity;
 
 
 public class MainPageICActivity extends AppCompatActivity {
@@ -32,7 +32,7 @@ public class MainPageICActivity extends AppCompatActivity {
         findViewById(R.id.issuebtn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainPageICActivity.this,ListPrActivity2.class));
+                startActivity(new Intent(MainPageICActivity.this,ListPjNameActivity.class));
             }
         });
 

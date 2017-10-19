@@ -83,7 +83,7 @@
 
         <Button
             android:id="@+id/approvebtn"
-            style="@android:style/Widget.DeviceDefault.Button.Inset"
+            style="@android:style/Widget.Material.Light.Button.Inset"
             android:layout_width="288dp"
             android:layout_height="83dp"
             android:layout_alignParentStart="true"
@@ -122,11 +122,12 @@
 
             <Button
                 android:id="@+id/inventorybtn"
-                style="@android:style/Widget.DeviceDefault.Button.Inset"
+                style="@android:style/Widget.Material.Light.Button.Inset"
                 android:layout_width="288dp"
                 android:layout_height="84dp"
                 android:text="INVENTORY"
                 android:textColor="@color/QRCodeBlackColor"
+                android:textColorLink="@color/input_login_hint"
                 app:srcCompat="@drawable/owner1" />
         </RelativeLayout>
         <!--<TextView-->

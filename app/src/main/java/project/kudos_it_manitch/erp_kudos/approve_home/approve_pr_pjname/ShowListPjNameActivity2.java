@@ -1,4 +1,4 @@
-package project.kudos_it_manitch.erp_kudos.inventory_home;
+package project.kudos_it_manitch.erp_kudos.approve_home.approve_pr_pjname;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,7 +12,7 @@ import project.kudos_it_manitch.erp_kudos.R;
 import project.kudos_it_manitch.erp_kudos.main_inventory.Qr_code_gen;
 
 
-public class ShowDetailPrActivity2 extends AppCompatActivity implements View.OnClickListener {
+public class ShowListPjNameActivity2 extends AppCompatActivity implements View.OnClickListener {
 
     //Explicit
     private String projectnameStrings, projectstatusStrings;
@@ -34,7 +34,7 @@ public class ShowDetailPrActivity2 extends AppCompatActivity implements View.OnC
         findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ShowDetailPrActivity2.this,Qr_code_gen.class));
+                startActivity(new Intent(ShowListPjNameActivity2.this,Qr_code_gen.class));
             }
         });
     }//onCreate
@@ -66,7 +66,6 @@ public class ShowDetailPrActivity2 extends AppCompatActivity implements View.OnC
         projectstatusStrings = getIntent().getStringExtra("project_status");
 
         projectnameTextView.setText("project_name");
-
         projectstatusTextView.setText("Status : " + "project_status");
 
     }

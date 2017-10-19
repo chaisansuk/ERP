@@ -25,7 +25,7 @@ public class ListApproveActivity extends AppCompatActivity {
     private ListView listView;
     private String type;
     private SharedPreferences sharedPreferences;
-    private String m_id, m_code, m_user;
+    private String m_id, m_code, m_user,project_id;
     private String[] run_number, projects, project_name, create_user, create_date, types;
 
     @Override
@@ -39,14 +39,11 @@ public class ListApproveActivity extends AppCompatActivity {
 
 
         type = getIntent().getStringExtra("type");
+        project_id = getIntent().getStringExtra("project_id");
         sharedPreferences = getApplicationContext().getSharedPreferences("session_member", Context.MODE_PRIVATE);
         m_id = sharedPreferences.getString("m_id", "false");
         m_code = sharedPreferences.getString("m_code", "false");
         m_user = sharedPreferences.getString("m_user", "false");
-
-        //Call AsyncTask
-//        SynPr synPr = new SynPr(this, listView);
-//        synPr.execute();
 
     }   // Main Method
 
@@ -60,7 +57,7 @@ public class ListApproveActivity extends AppCompatActivity {
 
         Config config = new Config();
 
-        String body = "[{'key':'m_id','value':'" + m_id + "'},{'key':'m_code','value':'" + m_code + "'},{'key':'type','value':'" + type + "'}]";
+        String body = "[{'key':'m_id','value':'" + m_id + "'},{'key':'m_code','value':'" + m_code + "'},{'key':'type','value':'" + type + "'},{'key':'project_id','value':'" + project_id + "'}]";
         GetService getService = new GetService(getApplicationContext(), config.getListapprove(), body);
         try {
             getService.execute();

@@ -6,10 +6,11 @@ package project.kudos_it_manitch.erp_kudos.config;
 
 public class Config {
     private String host = "http://192.168.100.247/mekabase/";
-   // private String host = "http://192.168.43.61/cloudmeka/";
+    //private String host = "http://192.168.100.9/cloudmeka/";
     private String serlogin = "app_controller/login_app";
     private String noti = "app_controller/get_notify";
     private String listapprove = "app_controller/get_list_approve";
+    private String listproject = "app_controller/get_list_project";
     private String detail_sequenc = "app_controller/detail_approve_sequence";
 
     public String getHost() {
@@ -26,6 +27,10 @@ public class Config {
 
     public String getListapprove() {
         return  host+listapprove;
+    }
+
+    public String getListproject() {
+        return  host+listproject;
     }
 
     public String getDetailSequenc() {

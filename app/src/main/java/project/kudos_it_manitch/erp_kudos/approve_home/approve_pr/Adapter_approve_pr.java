@@ -34,7 +34,9 @@ public class Adapter_approve_pr extends BaseAdapter {
                               String[] id_item,
                               String doc_no,
                               String pj_code,
-                              String m_user,String type) {
+                              String m_user,
+                              String type
+                             ) {
         this.context = context;
         this.lock = lock;
         this.user = user;
@@ -48,7 +50,9 @@ public class Adapter_approve_pr extends BaseAdapter {
         this.pj_code = pj_code;
         this.m_user = m_user;
         this.type = type;
+
          config = new Config();
+
     }
 
 
@@ -71,7 +75,7 @@ public class Adapter_approve_pr extends BaseAdapter {
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view2 = layoutInflater.inflate(R.layout.main_approve_pr2, viewGroup, false);
+        View view2 = layoutInflater.inflate(R.layout.main_approve_pr_po, viewGroup, false);
         TextView approve_sequenceTextView = view2.findViewById(R.id.approve_sequence);
         TextView userTextView = view2.findViewById(R.id.user);
         TextView messageTextView = view2.findViewById(R.id.message);
@@ -105,7 +109,8 @@ public class Adapter_approve_pr extends BaseAdapter {
                 Boolean res_approve = approve_action(id_item[i],doc_no,pj_code,approve_sequence[i],type);
                 if(res_approve==true){
                     Toast.makeText(context, "approve สำเร็จ", Toast.LENGTH_SHORT).show();
-                    notifyDataSetChanged();
+//                    Intent i = new Intent(context, MainPageApproveActivity.class);
+//                    context.startActivity(i);
 
 
                 }else{
@@ -122,7 +127,9 @@ public class Adapter_approve_pr extends BaseAdapter {
               Boolean status_disapprove =  disapprove_action(id_item[i], doc_no, type);
                 if(status_disapprove==true){
                     Toast.makeText(context, "Disapprove สำเร็จ", Toast.LENGTH_SHORT).show();
-                    notifyDataSetChanged();
+
+//                    Intent i = new Intent(context, ShowDetailPrActivity.class);
+//                    context.startActivity(i);
                 }else{
                     Toast.makeText(context, "Disapprove ไม่สำเร็จ", Toast.LENGTH_SHORT).show();
                 }
