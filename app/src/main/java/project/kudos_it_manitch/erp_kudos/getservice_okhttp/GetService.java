@@ -65,6 +65,7 @@ public class GetService extends AsyncTask<String, Void, String> {
             if(response.code() == 200){
                 //status 200 OK
                 String resJson = response.body().string();
+                Log.d("OKhttp", "status code ==>" +resJson);
                 return resJson;
             }else{
                 Log.d("OKhttp", "status code ==>" + response.code());

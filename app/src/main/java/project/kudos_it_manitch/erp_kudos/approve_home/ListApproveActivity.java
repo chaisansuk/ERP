@@ -90,6 +90,7 @@ public class ListApproveActivity extends AppCompatActivity {
                         create_date[i] = item_obj.getString("creatudate");
                         types[i] = item_obj.getString("type");
                     }
+                    getService.cancel(true);
 
 //                    Log.d("count", String.valueOf(create_date.length));
                     Adapter_approve adapter_approve = new Adapter_approve(getApplicationContext(), run_number, projects, project_name, create_user, create_date, types);

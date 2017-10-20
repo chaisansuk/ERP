@@ -74,7 +74,7 @@ public class MainActivityHome extends AppCompatActivity {
                         editor.putString("m_user",m_user);
                         editor.putString("m_pass",m_pass);
                         editor.commit();
-
+                        getService.cancel(true);
 
                         // intent to home page list
                         Intent intent = new Intent(getApplicationContext(),MainPageActivity.class);

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -82,6 +83,15 @@ public class Adapter_approve_pr extends BaseAdapter {
         Button approveButton = view2.findViewById(R.id.approvebtn);
         Button disapproveButton = view2.findViewById(R.id.disapprovebtn);
         Button rejectbtnButton = view2.findViewById(R.id.rejectbtn);
+        ImageView lock = view2.findViewById(R.id.lock);
+        if(lock.equals("Y")){
+            lock.setImageResource(R.drawable.lock_ap);
+        }else if(lock.equals("N")){
+
+        }else{
+
+        }
+
         approve_sequenceTextView.setText(approve_sequence[i]);
         userTextView.setText(user[i]);
         messageTextView.setText(message[i]);
