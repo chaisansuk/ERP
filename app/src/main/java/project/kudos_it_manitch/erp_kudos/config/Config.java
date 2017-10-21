@@ -5,8 +5,8 @@ package project.kudos_it_manitch.erp_kudos.config;
  */
 
 public class Config {
-    private String host = "http://192.168.100.247/mekabase/";
-    //private String host = "http://192.168.100.9/cloudmeka/";
+    //private String host = "http://192.168.100.247/mekabase/";
+    private String host = "http://192.168.100.9/cloudmeka/";
 
     private String serlogin = "app_controller/login_app";
     private String noti = "app_controller/get_notify";
