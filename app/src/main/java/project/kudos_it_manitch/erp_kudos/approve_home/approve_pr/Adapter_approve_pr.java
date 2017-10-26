@@ -80,6 +80,7 @@ public class Adapter_approve_pr extends BaseAdapter {
         TextView approve_sequenceTextView = view2.findViewById(R.id.approve_sequence);
         TextView userTextView = view2.findViewById(R.id.user);
         TextView messageTextView = view2.findViewById(R.id.message);
+
         Button approveButton = view2.findViewById(R.id.approvebtn);
         Button disapproveButton = view2.findViewById(R.id.disapprovebtn);
         Button rejectbtnButton = view2.findViewById(R.id.rejectbtn);

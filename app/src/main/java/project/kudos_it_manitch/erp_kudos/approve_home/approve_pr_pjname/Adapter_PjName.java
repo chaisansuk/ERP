@@ -16,13 +16,14 @@ import project.kudos_it_manitch.erp_kudos.R;
 
 public class Adapter_PjName extends BaseAdapter {
     private Context context;
-    private String[]  project_name,project_code,project_id;
+    private String[]  project_name,project_code,project_id,count_doc;
 
-    public Adapter_PjName(Context context, String[] project_name, String[] project_code, String[] project_id) {
+    public Adapter_PjName(Context context, String[] project_name, String[] project_code, String[] project_id, String[] count_doc) {
         this.context = context;
         this.project_name = project_name;
         this.project_code = project_code;
         this.project_id = project_id;
+        this.count_doc = count_doc;
     }
 
     @Override
@@ -45,8 +46,11 @@ public class Adapter_PjName extends BaseAdapter {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view1 = layoutInflater.inflate(R.layout.main_list_pjname, viewGroup, false);
         TextView project_nameTextView = view1.findViewById(R.id.project_name);
+        TextView count_docTextView = view1.findViewById(R.id.count_doc);
         ImageView next = view1.findViewById(R.id.next);
+
         project_nameTextView.setText(project_name[i]);
+        count_docTextView.setText(count_doc[i]);
         next.setImageResource(R.drawable.next);
         return view1;
     }

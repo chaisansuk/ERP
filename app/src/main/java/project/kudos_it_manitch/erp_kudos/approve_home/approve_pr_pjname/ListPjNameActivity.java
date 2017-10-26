@@ -27,7 +27,7 @@ public class ListPjNameActivity extends AppCompatActivity {
     private String type;
     private SharedPreferences sharedPreferences;
     private String m_id;
-    private String[] project_name, project_code, project_id;
+    private String[] project_name, project_code, project_id, count_doc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,18 +75,18 @@ public class ListPjNameActivity extends AppCompatActivity {
                 project_name = new String[json_result.length()];
                 project_code = new String[json_result.length()];
                 project_id = new String[json_result.length()];
+                count_doc = new String[json_result.length()];
 
                 for (int i = 0; i < json_result.length(); i++) {
                     JSONObject jsonObject = json_result.getJSONObject(i);
-
-
                     project_name[i] = jsonObject.getString("project_name");
                     project_code[i] = jsonObject.getString("project_code");
                     project_id[i] = jsonObject.getString("project_id");
+                    count_doc[i] = jsonObject.getString("count_doc");
 
                 }
 
-                Adapter_PjName adapterPjName = new Adapter_PjName(getApplicationContext(), project_name,project_code,project_id);
+                Adapter_PjName adapterPjName = new Adapter_PjName(getApplicationContext(), project_name,project_code,project_id,count_doc);
 
                 listView.setAdapter(adapterPjName);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -95,6 +95,7 @@ public class ListPjNameActivity extends AppCompatActivity {
                         Intent intent = new Intent(ListPjNameActivity.this, ListApproveActivity.class);
                         intent.putExtra("project_id", project_id[i]);
                         intent.putExtra("type", type);
+
                         startActivity(intent);
                         //Toast.makeText(ListPjNameActivity.this, project_id[i], Toast.LENGTH_SHORT).show();
                     }
