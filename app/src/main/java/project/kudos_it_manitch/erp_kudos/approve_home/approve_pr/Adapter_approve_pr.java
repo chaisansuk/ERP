@@ -81,7 +81,7 @@ public class Adapter_approve_pr extends BaseAdapter {
         TextView userTextView = view2.findViewById(R.id.user);
         TextView messageTextView = view2.findViewById(R.id.message);
 
-        Button approveButton = view2.findViewById(R.id.approvebtn);
+        final Button approveButton = view2.findViewById(R.id.approvebtn);
         Button disapproveButton = view2.findViewById(R.id.disapprovebtn);
         Button rejectbtnButton = view2.findViewById(R.id.rejectbtn);
         ImageView lockImageView = view2.findViewById(R.id.lock);
@@ -117,25 +117,24 @@ public class Adapter_approve_pr extends BaseAdapter {
         approveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Boolean res_approve = approve_action(id_item[i],doc_no,pj_code,approve_sequence[i],type);
                 if(res_approve==true){
                     Toast.makeText(context, "approve สำเร็จ", Toast.LENGTH_SHORT).show();
-//                    Intent i = new Intent(context, MainPageApproveActivity.class);
-//                    context.startActivity(i);
-
+                   // Intent i = new Intent(context, ShowDetailPrActivity.class);
+                   // context.startActivity(i);
 
                 }else{
                     Toast.makeText(context, "approve ไม่สำเร็จ", Toast.LENGTH_SHORT).show();
                 }
 
             }
+
         });
 
         disapproveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, i+" disapprove "+id_item[i]+" "+doc_no, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, i+" disapprove "+id_item[i]+" "+doc_no, Toast.LENGTH_SHORT).show();
               Boolean status_disapprove =  disapprove_action(id_item[i], doc_no, type);
                 if(status_disapprove==true){
                     Toast.makeText(context, "Disapprove สำเร็จ", Toast.LENGTH_SHORT).show();
@@ -152,30 +151,25 @@ public class Adapter_approve_pr extends BaseAdapter {
         rejectbtnButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, i+" reject "+id_item[i]+" "+doc_no, Toast.LENGTH_SHORT).show();
+               // Toast.makeText(context, i+" reject "+id_item[i]+" "+doc_no, Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
             }
         });
 
-
-
         return view2;
     }
+
 
     public Boolean approve_action(String item_id,String doc_no,String pj_code,String sequence,String type){
 
         boolean status_approve = false;
         String url = config.getHost() + "app_controller/approve_action/"+item_id+"/"+doc_no+"/"+pj_code+"/"+sequence+"/"+type;
-
-
         GetService getService = new GetService(context, url, null);
-
         getService.execute();
 
         try {
             String res = getService.get();
-
-            Toast.makeText(context, res, Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, res, Toast.LENGTH_LONG).show();
 
             if(res != null){
                status_approve = Boolean.parseBoolean(res.toString());
@@ -194,16 +188,13 @@ public class Adapter_approve_pr extends BaseAdapter {
     public Boolean disapprove_action(String id_item,String doc_no,String type){
         boolean status_disapprove = false;
         String url = config.getHost() + "app_controller/disapprove_action/"+id_item+"/"+doc_no+"/"+pj_code+"/"+m_user+"/"+type;
-        Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
-
+     //   Toast.makeText(context, url, Toast.LENGTH_SHORT).show();
         GetService getService = new GetService(context, url, null);
-
         getService.execute();
 
         try {
             String res = getService.get();
-
-            Toast.makeText(context, res, Toast.LENGTH_LONG).show();
+            //Toast.makeText(context, res, Toast.LENGTH_LONG).show();
 
             if(res != null){
                 status_disapprove = Boolean.parseBoolean(res.toString());
@@ -218,4 +209,5 @@ public class Adapter_approve_pr extends BaseAdapter {
 
         return status_disapprove;
     }
+
 }

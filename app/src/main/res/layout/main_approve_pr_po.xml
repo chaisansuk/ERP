@@ -65,17 +65,17 @@
         android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="19dp"
-        android:layout_marginRight="191dp"
         android:fontFamily="sans-serif"
         android:text="user"
         android:textAlignment="viewStart"
         android:textSize="14sp"
-        app:layout_constraintRight_toRightOf="parent"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/message"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
-        app:layout_constraintVertical_bias="0.888" />
+        app:layout_constraintVertical_bias="1.0"
+        android:layout_marginLeft="13dp"
+        app:layout_constraintLeft_toLeftOf="@+id/approve_sequence" />
 
     <TextView
         android:id="@+id/message"

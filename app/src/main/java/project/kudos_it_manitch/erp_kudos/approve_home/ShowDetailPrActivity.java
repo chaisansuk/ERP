@@ -2,10 +2,12 @@ package project.kudos_it_manitch.erp_kudos.approve_home;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -28,6 +30,8 @@ public class ShowDetailPrActivity extends AppCompatActivity  {
     private String[] lock, user, approve_sequence,approve,disapprove,reject,message,id_item;
     private Button approvebtn;
     private Adapter_approve_pr adapter_approve_pr;
+    // Refresh menu item
+    private MenuItem refreshMenuItem;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -115,6 +119,51 @@ public class ShowDetailPrActivity extends AppCompatActivity  {
         getMenuInflater().inflate(R.menu.menu_listview, menu);
         return super.onCreateOptionsMenu(menu);
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Take appropriate action for each action item click
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                // refresh
+                refreshMenuItem = item;
+                // load the data from server
+                new SyncData().execute();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    /**
+     * Async task to load the data from server
+     * **/
+    private class SyncData extends AsyncTask<String, Void, String> {
+        @Override
+        protected void onPreExecute() {
+            // set the progress bar view
+            refreshMenuItem.setActionView(R.layout.action_progressbar);
+            refreshMenuItem.expandActionView();
+        }
 
+        @Override
+        protected String doInBackground(String... params) {
+            // not making real request in this demo
+            // for now we use a timer to wait for sometime
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String result) {
+            refreshMenuItem.collapseActionView();
+            // remove the progress bar view
+            refreshMenuItem.setActionView(null);
+            show_list_view();
+        }
+
+    }
 
 }//Main Class
