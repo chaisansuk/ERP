@@ -6,28 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".main_splash.SplashScreen">
 
-    <LinearLayout
-        android:layout_width="288dp"
-        android:layout_height="102dp"
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="322dp"
+        android:layout_height="134dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/splashas"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:src="@drawable/splashas"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.442"
-        tools:layout_constraintBottom_creator="1"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintRight_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:id="@+id/linearLayout">
+        app:layout_constraintVertical_bias="0.501" />
 
-    </LinearLayout>
     <ProgressBar
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="409dp"
@@ -54,7 +47,6 @@
         android:textSize="12sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
         app:layout_constraintVertical_bias="1.0"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintBottom_toTopOf="@+id/progressBar" />
